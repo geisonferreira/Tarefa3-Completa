@@ -1,0 +1,413 @@
+Documentação da API.
+A api consiste em CRUD para as duas classes
+Classe evento e Classe edição
+Sendo a relação que um evento pode ter mais de uma edição e uma edição está vinculado a unico evento
+
+Serviços da classe evento
+    "idevento": identificador unico para cada evento
+    "nome": nome do evento
+    "sigla": sigla que refere-se o evento
+    "areadeconcentracao": area de concentração do evento.
+    "instituicaoorganizadora": nome da instituição organizadora do evento
+
+Serviços da classe edição
+
+    "idedicao":Id de edição do evento
+    "numero": numero do evento
+    "ano":  ano
+    "datainicio": data inicio do evento fortmato aaaammdd
+    "datafim": data fim do evento fortmato aaaammdd
+    "cidade": "Rio de Janeiro",
+    "pais": pais do evento
+    "fkIdevento": chave estrangeira que identifica o evento 
+
+    
+GET
+Retorna a lista de todos os eventos cadastrados 
+path = "/ev/todos	
+	
+[
+    {
+        "idevento": 1,
+        "nome": "SEM.Instituto de Matemática Pura e Aplicada",
+        "sigla": "IMPA",
+        "areadeconcentracao": "matemática",
+        "instituicaoorganizadora": "IMPA"
+    },
+    {
+        "idevento": 2,
+        "nome": "SEM. Dep. Econ Puc-Rio",
+        "sigla": "ECO",
+        "areadeconcentracao": "Economia",
+        "instituicaoorganizadora": "Puc-Rio"
+    },
+    {
+        "idevento": 3,
+        "nome": "SEM. ACAD. Instituto de Computação-UFF",
+        "sigla": "IC-UFF",
+        "areadeconcentracao": "Computação",
+        "instituicaoorganizadora": "UFF"
+    },
+    {
+        "idevento": 4,
+        "nome": "Portões Abertos Semana do Aviador",
+        "sigla": "ITA",
+        "areadeconcentracao": "Ciências Aeronáuticas",
+        "instituicaoorganizadora": "Instituto Tecnológico da Aeronautica"
+    }
+]
+	
+	
+	
+GET
+Retorna a lista de todas as edições com os eventos cadastrados 
+path = localhost:8080/ed/todos	
+[
+    {
+        "idedicao": 1,
+        "numero": "50",
+        "ano": "2019",
+        "datainicio": 2.0190401E7,
+        "datafim": 2.0190405E7,
+        "cidade": "Rio de Janeiro",
+        "pais": "Br",
+        "fkIdevento": {
+            "idevento": 1,
+            "nome": "SEM.Instituto de Matemática Pura e Aplicada",
+            "sigla": "IMPA",
+            "areadeconcentracao": "matemática",
+            "instituicaoorganizadora": "IMPA"
+        }
+    },
+    {
+        "idedicao": 2,
+        "numero": "51",
+        "ano": "2020",
+        "datainicio": 2.0200331E7,
+        "datafim": 2.0200405E7,
+        "cidade": "Maricá",
+        "pais": "Br",
+        "fkIdevento": {
+            "idevento": 1,
+            "nome": "SEM.Instituto de Matemática Pura e Aplicada",
+            "sigla": "IMPA",
+            "areadeconcentracao": "matemática",
+            "instituicaoorganizadora": "IMPA"
+        }
+    },
+    {
+        "idedicao": 3,
+        "numero": "1",
+        "ano": "2019",
+        "datainicio": 2.0190101E7,
+        "datafim": 2.0190105E7,
+        "cidade": "Rio de Janeiro",
+        "pais": "Br",
+        "fkIdevento": {
+            "idevento": 2,
+            "nome": "SEM. Dep. Econ Puc-Rio",
+            "sigla": "ECO",
+            "areadeconcentracao": "Economia",
+            "instituicaoorganizadora": "Puc-Rio"
+        }
+    },
+    {
+        "idedicao": 4,
+        "numero": "2",
+        "ano": "2020",
+        "datainicio": 2.0200101E7,
+        "datafim": 2.0200105E7,
+        "cidade": "Rio de Janeiro",
+        "pais": "Br",
+        "fkIdevento": {
+            "idevento": 2,
+            "nome": "SEM. Dep. Econ Puc-Rio",
+            "sigla": "ECO",
+            "areadeconcentracao": "Economia",
+            "instituicaoorganizadora": "Puc-Rio"
+        }
+    },
+    {
+        "idedicao": 5,
+        "numero": "1",
+        "ano": "2010",
+        "datainicio": 2.0100101E7,
+        "datafim": 2.0100105E7,
+        "cidade": "Rio de Janeiro",
+        "pais": "Br",
+        "fkIdevento": {
+            "idevento": 3,
+            "nome": "SEM. ACAD. Instituto de Computação-UFF",
+            "sigla": "IC-UFF",
+            "areadeconcentracao": "Computação",
+            "instituicaoorganizadora": "UFF"
+        }
+    },
+    {
+        "idedicao": 6,
+        "numero": "5",
+        "ano": "2020",
+        "datainicio": 2.0200101E7,
+        "datafim": 2.0200105E7,
+        "cidade": "Buenos Aires",
+        "pais": "Ar",
+        "fkIdevento": {
+            "idevento": 3,
+            "nome": "SEM. ACAD. Instituto de Computação-UFF",
+            "sigla": "IC-UFF",
+            "areadeconcentracao": "Computação",
+            "instituicaoorganizadora": "UFF"
+        }
+    },
+    {
+        "idedicao": 7,
+        "numero": "1",
+        "ano": "2013",
+        "datainicio": 2.0131225E7,
+        "datafim": 2.0131231E7,
+        "cidade": "São josé dos Campos",
+        "pais": "Br",
+        "fkIdevento": {
+            "idevento": 4,
+            "nome": "Portões Abertos Semana do Aviador",
+            "sigla": "ITA",
+            "areadeconcentracao": "Ciências Aeronáuticas",
+            "instituicaoorganizadora": "Instituto Tecnológico da Aeronautica"
+        }
+    },
+    {
+        "idedicao": 8,
+        "numero": "5",
+        "ano": "2017",
+        "datainicio": 2.0170101E7,
+        "datafim": 2.0170105E7,
+        "cidade": "Pirasununga",
+        "pais": "Br",
+        "fkIdevento": {
+            "idevento": 4,
+            "nome": "Portões Abertos Semana do Aviador",
+            "sigla": "ITA",
+            "areadeconcentracao": "Ciências Aeronáuticas",
+            "instituicaoorganizadora": "Instituto Tecnológico da Aeronautica"
+        }
+    },
+    {
+        "idedicao": 9,
+        "numero": "5",
+        "ano": "2021",
+        "datainicio": 2.0210101E7,
+        "datafim": 2.0210105E7,
+        "cidade": "Barbacena",
+        "pais": "Br",
+        "fkIdevento": {
+            "idevento": 4,
+            "nome": "Portões Abertos Semana do Aviador",
+            "sigla": "ITA",
+            "areadeconcentracao": "Ciências Aeronáuticas",
+            "instituicaoorganizadora": "Instituto Tecnológico da Aeronautica"
+        }
+    }
+]	
+	
+	
+===============================================================================================	
+	
+
+
+Post
+Cria um novo evento (ou atualiza um evento e retorna o objeto do novo evento
+localhost:8080/ev/salvar
+
+ {
+        "idevento": 2,
+        "nome": "SEM. Dep. Econ Puc-Rio",
+        "sigla": "ECO",
+        "areadeconcentracao": "Economia",
+        "instituicaoorganizadora": "Puc-Rio"
+    },
+
+Post
+Cria um novo dição (ou atualiza uma edição) e retorna o objeto do nova edição
+path = "/ed/salvar")
+
+{"idedicao": 11,
+"numero": "01",
+"ano": "2020",
+"datainicio":20211231, 
+"datafim": 20210104,
+"cidade": "rio",
+"pais" : "br",
+"fkIdevento":2
+}
+
+
+
+Recursos de instância
+
+GET
+Recursos de uma instancia individual da classe evento, capturando pelo ID
+(path = "/ev/{IDEVENTO}")
+
+{
+    "idevento": 1,
+    "nome": "SEM.Instituto de Matemática Pura e Aplicada",
+    "sigla": "IMPA",
+    "areadeconcentracao": "Matemática",
+    "instituicaoorganizadora": "IMPA"
+}
+
+
+
+
+
+GET
+Recursos de uma instancia individual da classe edição, capturando pelo ID retornando a edição e o respectivo evento
+path = "/ed/{IDEDICAO}")
+
+
+    "idedicao": 8,
+    "numero": "5",
+    "ano": "2017",
+    "datainicio": 2.0170101E7,
+    "datafim": 2.0170105E7,
+    "cidade": "Pirasununga",
+    "pais": "Br",
+    "fkIdevento": {
+        "idevento": 4,
+        "nome": "Portões Abertos Semana do Aviador",
+        "sigla": "ITA",
+        "areadeconcentracao": "Ciências Aeronáuticas",
+        "instituicaoorganizadora": "Instituto Tecnológico da Aeronautica"
+    }
+}
+
+
+*****
+Post
+****
+
+
+
+DELETE
+Recurso de para deletar uma instancia individual da edição pelo ID.Retorna o id da instancia deletada.
+path = "/ed-deletar/{IDEDICAO}"
+
+11  (numero de exemplo de deleção da instancia de id 11 da classe edição)
+
+
+
+DELETE
+Recurso de para deletar uma instancia individual do evento pelo ID.Retorna o id da instancia deletada.
+
+localhost:8080/ev-deletar/4
+4 (numero de exemplo de deleção da instancia de id 11 da classe evento)
+
+
+
+================================
+Consultas
+
+Filtro Cidade:
+Lista os recursos possibilitando o uso dos filtros para cidades sendo aplicado sobre as classes de edição, retornando os eventos e edição filtrados
+
+Filtro Cidade
+GET
+localhost:8080/search-cidade?cidade=
+
+
+Exemplo:
+[
+    {
+        "idedicao": 6,
+        "numero": "5",
+        "ano": "2020",
+        "datainicio": 2.0200101E7,
+        "datafim": 2.0200105E7,
+        "cidade": "Buenos Aires",
+        "pais": "Ar",
+        "fkIdevento": {
+            "idevento": 3,
+            "nome": "SEM. ACAD. Instituto de Computação-UFF",
+            "sigla": "IC-UFF",
+            "areadeconcentracao": "Computação",
+            "instituicaoorganizadora": "UFF"
+        }
+    }
+]
+
+
+
+Filtro data
+Possibilitar trazer as edições e respectivos eventos a partir de um data maxima e/ou data minima, os parametros tem valores default 0 para o minimo e valor elevado para o maximo
+as datas estão no formato aaaammdd
+
+GET
+ localhost:8080/search-data?min=20091201&max=20190101
+ localhost:8080/search-data?min=20091201
+ localhost:8080/search-data?max=20190101
+ 
+ Exemplo:
+ [
+    {
+        "idedicao": 3,
+        "numero": "1",
+        "ano": "2019",
+        "datainicio": 2.0190101E7,
+        "datafim": 2.0190105E7,
+        "cidade": "Rio de Janeiro",
+        "pais": "Br",
+        "fkIdevento": {
+            "idevento": 2,
+            "nome": "SEM. Dep. Econ Puc-Rio",
+            "sigla": "ECO",
+            "areadeconcentracao": "Economia",
+            "instituicaoorganizadora": "Puc-Rio"
+        }
+    },
+    {
+        "idedicao": 5,
+        "numero": "1",
+        "ano": "2010",
+        "datainicio": 2.0100101E7,
+        "datafim": 2.0100105E7,
+        "cidade": "Rio de Janeiro",
+        "pais": "Br",
+        "fkIdevento": {
+            "idevento": 3,
+            "nome": "SEM. ACAD. Instituto de Computação-UFF",
+            "sigla": "IC-UFF",
+            "areadeconcentracao": "Computação",
+            "instituicaoorganizadora": "UFF"
+        }
+    }
+]
+ 
+ 
+ Filtro data e cidade
+ Traz as datas e cidades filtradas nos respectios eventos a partir do campo data de inicio (se não informado é 0, portanto traz todas) e cidade (default é vazio, portanto se não informado traz todas) 
+ A data tem que ser informada pelo min no formato aaaammdd
+  
+ 
+ GET
+ localhost:8080/search-datacidade?min=20091201&cidade=Buenos
+ Exemplo:
+[
+    {
+        "idedicao": 6,
+        "numero": "5",
+        "ano": "2020",
+        "datainicio": 2.0200101E7,
+        "datafim": 2.0200105E7,
+        "cidade": "Buenos Aires",
+        "pais": "Ar",
+        "fkIdevento": {
+            "idevento": 3,
+            "nome": "SEM. ACAD. Instituto de Computação-UFF",
+            "sigla": "IC-UFF",
+            "areadeconcentracao": "Computação",
+            "instituicaoorganizadora": "UFF"
+        }
+    }
+]
+
+
